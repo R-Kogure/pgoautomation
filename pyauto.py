@@ -1,8 +1,10 @@
 import pyautogui
 from pyautogui import moveTo, moveRel, click, doubleClick, dragTo, dragRel, position, PAUSE
 from time import sleep
+import tkinter as tk
 
 pyautogui.FAILSAFE = True
+
 
 sleep(6)#6秒の待機時間のうちに画面を表示させておく
 
@@ -17,7 +19,7 @@ setloc_y = 1045
 
 
 #------ 移動の待機時間の定義 ------
-move_duration = 1.5
+move_duration = 1
 drag_duration = 2.5
 
 
@@ -41,6 +43,7 @@ while True:
             doubleClick()
             moveTo(setloc_x, setloc_y, duration = move_duration)
             click()
+            sleep(1)
         moveTo(end_x, end_y, duration = move_duration)
         dragRel(-interval_x*25, 0, duration = drag_duration)
 
@@ -53,6 +56,7 @@ while True:
             doubleClick()
             moveTo(setloc_x, setloc_y, duration = move_duration)
             click()
+            sleep(1)
         moveTo(start_x+100, start_y, duration = move_duration)
         dragRel(0, interval_y*7, duration =drag_duration)
         if num == maxrep//2:
@@ -65,6 +69,7 @@ while True:
             doubleClick()
             moveTo(setloc_x, setloc_y, duration = move_duration)
             click()
+            sleep(1)
         moveTo(start_x, end_y, duration = move_duration)
         if num < 2*num_movex + num_movey:
             dragRel(interval_x*25, 0, duration = drag_duration)
@@ -78,6 +83,7 @@ while True:
             doubleClick()
             moveTo(setloc_x, setloc_y, duration = move_duration)
             click()
+            sleep(1)
         moveTo(start_x, end_y, duration = move_duration)
         if num < maxrep:
             dragRel(0, -interval_y*7, duration =drag_duration)
