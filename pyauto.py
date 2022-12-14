@@ -1,3 +1,4 @@
+import tkinter as tk
 import pyautogui
 from pyautogui import moveTo, moveRel, click, doubleClick, dragTo, dragRel, position, PAUSE
 from time import sleep
