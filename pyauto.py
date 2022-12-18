@@ -3,13 +3,14 @@ from pyautogui import moveTo, moveRel, click, doubleClick, dragTo, dragRel, posi
 from time import sleep
 import tkinter as tk
 
+import ctypes
+
 pyautogui.FAILSAFE = True
 
 
-sleep(6)#6秒の待機時間のうちに画面を表示させておく
-
-
 #------ 座標の定義 ------
+#クリック時の座標を取得して環境が変わっても動くようにする
+
 start_x = 200
 end_x = 1700
 start_y = 138
@@ -17,6 +18,25 @@ end_y = 748
 setloc_x = 520
 setloc_y = 1045
 
+def get_startxy():
+    if ctypes.windll.user32.GetAsyncKeyState(0x01) == 0x8000:
+        return position()
+
+def get_endxy():
+    if ctypes.windll.user32.GetAsyncKeyState(0x01) == 0x8000:
+        return position()
+
+def get_setlocxy():
+    if ctypes.windll.user32.GetAsyncKeyState(0x01) == 0x8000:
+        return position()
+
+start_x,start_y = get_startxy()
+end_x, end_y = get_endxy()
+setloc_x, setloc_y = get_setlocxy()
+
+print(start_x,start_y)
+
+sleep(6)#6秒の待機時間のうちに画面を表示させておく
 
 #------ 移動の待機時間の定義 ------
 move_duration = 1
